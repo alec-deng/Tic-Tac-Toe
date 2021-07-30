@@ -1,0 +1,12 @@
+.grid {
+  height: 30;
+  width: 30;
+  margin: 30;
+  display: flex;
+}
+
+.board {
+  width: 9;
+  height: 9;
+  margin: 0.5;
+}
