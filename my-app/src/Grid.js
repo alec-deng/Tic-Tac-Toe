@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { check } from 'yargs';
 import './Grid.css';
 
 class Grid extends Component {
@@ -15,24 +14,24 @@ class Grid extends Component {
   check = () => {
     let board = this.state.board;
     for (let i = 0; i < 3; ++i) {
-      if (board[i] === board[i + 3] === board[i + 6] && board[i] !== "") {
-        console.log("yeah");
-        break;
+      if (board[i] === board[i + 3] && board[i] === board[i + 6] && board[i] !== "") {
+        return true;
       }
-      if (board[i * 3] === board[i * 3 + 1] === board[i * 3 + 2] && board[i] !== "") {
-        console.log("yeah");
-        break;
+      if (board[i * 3] === board[i * 3 + 1] && board[i] === board[i * 3 + 2] && board[i] !== "") {
+        return true;
       }
     }
-    if (board[0] === board[4] === board[8] && board[0] !== "") {
-      console.log("yeah");
+    if (board[0] === board[4] && board[0] === board[8] && board[0] !== "") {
+      return true;
     }
-    if (board[2] === board[4] === board[6] && board[0] !== "") {
-      console.log("yeah");
+    if (board[2] === board[4] && board[2] === board[6] && board[2] !== "") {
+      return true;
     }
+    return false;
   }
-  
+
   click = (index) => {
+    console.log(index);
     let player = this.state.player;
     let board = this.state.board;
 
@@ -47,7 +46,9 @@ class Grid extends Component {
       board: board
     });
 
-    this.check();
+    if (this.check()) {
+      console.log("someone wins");
+    }
   }
 
   render() {
