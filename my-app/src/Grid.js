@@ -14,10 +14,11 @@ class Grid extends Component {
 
   winner = (a, b, c) => {
     let board = this.state.board;
-    board[a] = <p className='win'>{board[a]}</p>;
-    board[b] = <p className='win'>{board[b]}</p>;
-    board[c] = <p className='win'>{board[c]}</p>;
+    board[a] = <h1 className='win'>{board[a]}</h1>;
+    board[b] = <h1 className='win'>{board[b]}</h1>;
+    board[c] = <h1 className='win'>{board[c]}</h1>;
     this.setState({board: board});
+    this.props.setWinner(this.state.player);
   }
 
   check = () => {
@@ -75,7 +76,7 @@ class Grid extends Component {
         {this.state.board.map((cell,index) => {
           return (
             <div className='cell' key={index} onClick={() => {this.click(index)}}>
-              <p className='player'>{cell}</p>
+              <div className='player'>{cell}</div>
             </div>
           );
         })}
