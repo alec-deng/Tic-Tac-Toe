@@ -1,14 +1,31 @@
-.grid {
-  height: 30;
-  width: 30;
-  margin: 30;
-  display: flex;
-  border: 2, solid, black;
+.player {
+  font-size: 10vh;
+  text-align: center;
+  margin-top: 3vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.board {
-  width: 9;
-  height: 9;
-  margin: 0.5;
-  border: 2, solid, black;
+.grid {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 60vh;
+  width: 60vh;
+  background-color: rgb(170, 170, 170);
+  padding: 0.5vh;
+  margin: auto;
+}
+
+.cell {
+  width: 19vh;
+  height: 19vh;
+  margin: 0.5vh;
+  float: left;
+  position: relative;
+  background-color: white;
+}
+
+.cell:hover {
+  background-color: lightblue;
 }
