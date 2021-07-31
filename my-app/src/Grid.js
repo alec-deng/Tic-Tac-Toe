@@ -6,32 +6,48 @@ class Grid extends Component {
   constructor() {
     super();
     this.state = {
+      win: false,
       player: "X",
       board: ["", "", "", "", "", "", "", "", ""]
     }
+  }
+
+  winner = (a, b, c) => {
+    let board = this.state.board;
+    board[a] = <p className='win'>{board[a]}</p>;
+    board[b] = <p className='win'>{board[b]}</p>;
+    board[c] = <p className='win'>{board[c]}</p>;
+    this.setState({board: board});
   }
 
   check = () => {
     let board = this.state.board;
     for (let i = 0; i < 3; ++i) {
       if (board[i] === board[i + 3] && board[i] === board[i + 6] && board[i] !== "") {
+        this.winner(i, i+3, i+6);
         return true;
       }
       if (board[i * 3] === board[i * 3 + 1] && board[i] === board[i * 3 + 2] && board[i] !== "") {
+        this.winner(i*3, i*3+1, i*3+2);
         return true;
       }
     }
     if (board[0] === board[4] && board[0] === board[8] && board[0] !== "") {
+      this.winner(0, 4, 8);
       return true;
     }
     if (board[2] === board[4] && board[2] === board[6] && board[2] !== "") {
+      this.winner(2, 4, 6);
       return true;
     }
     return false;
   }
 
   click = (index) => {
-    console.log(index);
+    if (this.state.win) {
+      return;
+    }
+    
     let player = this.state.player;
     let board = this.state.board;
 
@@ -47,7 +63,9 @@ class Grid extends Component {
     });
 
     if (this.check()) {
-      console.log("someone wins");
+      this.setState({
+        win: true
+      });
     }
   }
 
