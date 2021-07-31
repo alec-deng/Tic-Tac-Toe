@@ -1,3 +1,10 @@
+.player {
+  font-size: 10vh;
+  text-align: center;
+  margin-top: 3vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .grid {
   position: absolute;
   top: 15%;
@@ -5,19 +12,20 @@
   transform: translateX(-50%);
   height: 60vh;
   width: 60vh;
-  background-color: black;
+  background-color: rgb(170, 170, 170);
+  padding: 0.5vh;
   margin: auto;
 }
 
-.board {
-  width: 18vh;
-  height: 18vh;
-  margin: 1vh;
+.cell {
+  width: 19vh;
+  height: 19vh;
+  margin: 0.5vh;
   float: left;
   position: relative;
   background-color: white;
 }
 
-.board:hover {
-  background-color: black;
+.cell:hover {
+  background-color: lightblue;
 }
