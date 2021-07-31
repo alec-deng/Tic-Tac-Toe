@@ -1,14 +1,23 @@
 .grid {
-  height: 30;
-  width: 30;
-  margin: 30;
-  display: flex;
-  border: 2, solid, black;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 60vh;
+  width: 60vh;
+  background-color: black;
+  margin: auto;
 }
 
 .board {
-  width: 9;
-  height: 9;
-  margin: 0.5;
-  border: 2, solid, black;
+  width: 18vh;
+  height: 18vh;
+  margin: 1vh;
+  float: left;
+  position: relative;
+  background-color: white;
+}
+
+.board:hover {
+  background-color: black;
 }
