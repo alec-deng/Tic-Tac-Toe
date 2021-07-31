@@ -27,7 +27,7 @@ class Grid extends Component {
         this.winner(i, i+3, i+6);
         return true;
       }
-      if (board[i * 3] === board[i * 3 + 1] && board[i] === board[i * 3 + 2] && board[i] !== "") {
+      if (board[i * 3] === board[i * 3 + 1] && board[i * 3] === board[i * 3 + 2] && board[i * 3] !== "") {
         this.winner(i*3, i*3+1, i*3+2);
         return true;
       }
