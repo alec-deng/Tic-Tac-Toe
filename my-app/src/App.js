@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       xWins: 0,
       oWins: 0,
-      winner: "Tic-Tac-Toe"
+      winner: "Tic-Tac-Toe",
+      button: "Start"
     }
   }
 
@@ -29,16 +30,20 @@ class App extends Component {
     this.outputWinner(player);
     if (player === "X") {
       ++x;
+      this.child.setPlayer("O");
     } else if (player === "O") {
       ++o;
+      this.child.setPlayer("X");
     }
     this.setState({
       xWins: x,
-      oWins: o
+      oWins: o,
+      button: "Continue"
     });
   }
 
-  nextRound = () => {
+  startGame = () => {
+    this.child.startGame();
     if (this.state.winner === "Tic-Tac-Toe") {
       return;
     }
@@ -52,9 +57,11 @@ class App extends Component {
     this.setState({
       xWins: 0,
       oWins: 0,
-      winner: "Tic-Tac-Toe"
+      winner: "Tic-Tac-Toe",
+      button: "Start"
     });
     this.child.resetGrid();
+    this.child.endGame();
   }
 
   render() {
@@ -63,7 +70,7 @@ class App extends Component {
         <div className="xPlayer">X's Score: {this.state.xWins}</div>
         <div className="oPlayer">O's Score: {this.state.oWins}</div>
         <div className="winner">{this.state.winner}</div>
-        <button className="nextRound" onClick={this.nextRound}>Continue</button>
+        <button className="nextRound" onClick={this.startGame}>{this.state.button}</button>
         <Grid setWinner={this.setWinner} ref={ref => (this.child = ref)}/>
         <button className="resetGame" onClick={this.resetGame}>Reset</button>
       </div>

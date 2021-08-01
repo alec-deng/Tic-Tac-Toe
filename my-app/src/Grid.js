@@ -6,7 +6,7 @@ class Grid extends Component {
   constructor() {
     super();
     this.state = {
-      win: false,
+      win: true,
       player: "X",
       board: ["", "", "", "", "", "", "", "", ""],
       modifiable: [true, true, true, true, true, true, true, true, true],
@@ -15,10 +15,21 @@ class Grid extends Component {
     }
   }
 
+  startGame = () => {
+    this.setState({win: false});
+  }
+
+  endGame = () => {
+    this.setState({win: true});
+  }
+
+  setPlayer = (player) => {
+    this.setState({player: player});
+  }
+
   resetGrid = () => {
     this.setState({
       win: false,
-      player: "X",
       board: ["", "", "", "", "", "", "", "", ""],
       modifiable: [true, true, true, true, true, true, true, true, true],
       count: 0,
