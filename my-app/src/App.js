@@ -61,6 +61,7 @@ class App extends Component {
       button: "Start"
     });
     this.child.resetGrid();
+    this.child.setPlayer("X");
     this.child.endGame();
   }
 
