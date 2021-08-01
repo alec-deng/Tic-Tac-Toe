@@ -9,7 +9,9 @@ class Grid extends Component {
       win: false,
       player: "X",
       board: ["", "", "", "", "", "", "", "", ""],
-      count: 0
+      modifiable: [true, true, true, true, true, true, true, true, true],
+      count: 0,
+      preview: false
     }
   }
 
@@ -18,10 +20,12 @@ class Grid extends Component {
       win: false,
       player: "X",
       board: ["", "", "", "", "", "", "", "", ""],
-      count: 0
+      modifiable: [true, true, true, true, true, true, true, true, true],
+      count: 0,
+      preview: false
     })
   }
-
+  
   winner = (a, b, c) => {
     let board = this.state.board;
     board[a] = <h1 className='win'>{board[a]}</h1>;
@@ -55,23 +59,22 @@ class Grid extends Component {
   }
 
   click = (index) => {
-    if (this.state.win) {
+    if (this.state.win || this.state.modifiable[index] === false) {
       return;
     }
     
     let player = this.state.player;
     let board = this.state.board;
     let count = this.state.count;
-
-    if (board[index] !== "") {
-      return;
-    }
+    let modifiable = this.state.modifiable;
 
     board[index] = player;
+    modifiable[index] = false;
     player = (player === "X") ? "O" : "X";
     ++count;
     this.setState({
       player: player,
+      modifiable: modifiable,
       board: board,
       count: count
     });
@@ -86,12 +89,38 @@ class Grid extends Component {
     }
   }
 
+  enablePreview = (index) => {
+    if (this.state.win || this.state.modifiable[index] === false) {
+      return;
+    }
+    let player = this.state.player;
+    let board = this.state.board;
+    board[index] = <span style={{opacity: 0.4}}>{player}</span>;
+    this.setState({
+      board: board,
+      preview: true
+    });
+  }
+
+  disablePreview = (index) => {
+    if (this.state.win || this.state.modifiable[index] === false) {
+      return;
+    }
+    let board = this.state.board;
+    board[index] = "";
+    this.setState({
+      board: board,
+      preview: false
+    });
+  }
+
   render() {
     return (
       <div className='grid'>
         {this.state.board.map((cell,index) => {
           return (
-            <div className='cell' key={index} onClick={() => {this.click(index)}}>
+            <div className='cell' key={index} onClick={() => {this.click(index)}}
+            onMouseEnter={() => {this.enablePreview(index)}} onMouseLeave={() => {this.disablePreview(index)}}>
               <div className='player'>{cell}</div>
             </div>
           );

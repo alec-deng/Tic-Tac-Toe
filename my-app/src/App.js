@@ -39,6 +39,9 @@ class App extends Component {
   }
 
   nextRound = () => {
+    if (this.state.winner === "Tic-Tac-Toe") {
+      return;
+    }
     this.setState({
       winner: "Tic-Tac-Toe"
     });

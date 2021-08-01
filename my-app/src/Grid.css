@@ -33,7 +33,3 @@
   position: relative;
   background-color: white;
 }
-
-.cell:hover {
-  background-color: lightblue;
-}
