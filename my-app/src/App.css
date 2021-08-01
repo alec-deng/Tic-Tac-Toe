@@ -1,0 +1,56 @@
+.App {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 92vh;
+  width: 70vh;
+  background-color: rgb(69, 211, 221);
+  padding-top: 1%;
+}
+
+.xPlayer {
+  position: absolute;
+  top: 17%;
+  left: 17%;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.oPlayer {
+  position: absolute;
+  top: 17%;
+  right: 17%;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.winner {
+  position: flex;
+  top: 10vh;
+  text-align: center;
+  font-size: 8vh;
+  font-family: Comic Sans MS;
+}
+
+.nextRound {
+  position: absolute;
+  bottom: 3%;
+  right: 22%;
+  height: 5vh;
+  width: 12vh;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(80, 210, 80);
+}
+
+.resetGame {
+  position: absolute;
+  bottom: 3%;
+  left: 22%;
+  height: 5vh;
+  width: 12vh;
+  font-size: medium;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(255, 100, 100);
+}

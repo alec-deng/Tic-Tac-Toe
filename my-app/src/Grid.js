@@ -8,8 +8,18 @@ class Grid extends Component {
     this.state = {
       win: false,
       player: "X",
-      board: ["", "", "", "", "", "", "", "", ""]
+      board: ["", "", "", "", "", "", "", "", ""],
+      count: 0
     }
+  }
+
+  resetGrid = () => {
+    this.setState({
+      win: false,
+      player: "X",
+      board: ["", "", "", "", "", "", "", "", ""],
+      count: 0
+    })
   }
 
   winner = (a, b, c) => {
@@ -51,6 +61,7 @@ class Grid extends Component {
     
     let player = this.state.player;
     let board = this.state.board;
+    let count = this.state.count;
 
     if (board[index] !== "") {
       return;
@@ -58,15 +69,20 @@ class Grid extends Component {
 
     board[index] = player;
     player = (player === "X") ? "O" : "X";
+    ++count;
     this.setState({
       player: player,
-      board: board
+      board: board,
+      count: count
     });
 
     if (this.check()) {
       this.setState({
         win: true
       });
+    } else if (this.state.count === 8) {
+      this.props.setWinner("Tie!");
+      this.setState({win: true});
     }
   }
 
